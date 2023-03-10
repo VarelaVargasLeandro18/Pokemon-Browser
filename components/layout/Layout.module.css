@@ -1,0 +1,104 @@
+.header {
+    min-height: var(--header-height);
+    background-color: antiquewhite;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 1em;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.logo {
+    font-size: 5vw;
+    text-shadow: -3px 0 blue, 0 3px blue, 3px 0 blue, 0 -3px blue;
+    color: yellow;
+    flex: 1;
+}
+
+.button {
+    all: unset;
+    cursor: pointer;
+}
+
+.buttonIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.logo {
+    justify-self: center;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+
+    background-color: antiquewhite;
+
+    display: flex;
+    justify-content: center;
+}
+
+.linksList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.linksItem {
+    min-width: 100%;
+    min-height: 2em;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+}
+
+.linksItem:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388; 
+}
+
+.links {
+    display: inline-block;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.realBody {
+    min-height: 100%;
+}
+
+@media screen and (min-width: 1025px) {
+    .nav {
+        width: var(--nav-aside-width);
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 1rem 0 0 0;
+        background-color: #f1f1f1;
+        height: 100%;
+        overflow: auto;
+        height: 100%;
+
+        background-color: antiquewhite;
+    }
+
+    .realBody {
+        margin-left: var(--nav-aside-width);
+    }
+}
