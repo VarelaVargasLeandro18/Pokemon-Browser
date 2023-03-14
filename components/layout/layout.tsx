@@ -1,11 +1,9 @@
 import useWindowWidth from "@/lib/hooks/useWindowWidth";
-import Link from "next/link";
-import { ReactElement, useEffect, useState } from "react";
-import styles from './Layout.module.css';
-import SearchBar from "../search-bar/searchBar";
 import { useRouter } from "next/router";
-import Menu, { IMenuLink } from "../menu/Menu";
+import { ReactElement, useEffect, useState } from "react";
 import { Header, IHeaderProps } from "../header/Header";
+import Menu, { IMenuLink } from "../menu/Menu";
+import styles from './Layout.module.css';
 
 const menuLinks : IMenuLink[] = [
     { name: 'Pokemon', path: '/pokemon' },
