@@ -5,6 +5,7 @@ import styles from './Layout.module.css';
 import SearchBar from "../search-bar/searchBar";
 import { useRouter } from "next/router";
 import Menu, { IMenuLink } from "../menu/Menu";
+import { Header, IHeaderProps } from "../header/Header";
 
 const menuLinks : IMenuLink[] = [
     { name: 'Pokemon', path: '/pokemon' },
@@ -18,21 +19,20 @@ export default function Layout ( {children} : {children: ReactElement} ) {
     const [windowWidth] = useWindowWidth();
     const { pathname } = useRouter();
 
+    const headerProps : IHeaderProps = {
+        setShowMenu,
+        showMenu,
+        showMenuButton: windowWidth <= 1024,
+        showSearchBar: !(pathname == "/")
+    }
+
     useEffect( () => {
         console.log(showMenu, (windowWidth <= 1024) && showMenu)
     }, [showMenu] );
     
     return (
         <div>
-            <header className={ styles.header }>
-                {windowWidth <= 1024 && <button className={ styles.button } onClick={ () => setShowMenu(!showMenu) }>
-                    <img className={ styles.buttonIcon } src="/menu_icon.svg" alt="Menu Button" />
-                </button>}
-                <Link href={ "/" }>
-                    <h1 className={ styles.logo }>Pokemon Browser</h1>
-                </Link>
-                { !(pathname == "/") && <SearchBar/> }
-            </header>
+            <Header {...headerProps} />
             { (windowWidth > 1024 || showMenu) && <Menu menuLinks={ menuLinks } /> }
             <div className={styles.realBody}>{children}</div>
         </div>
