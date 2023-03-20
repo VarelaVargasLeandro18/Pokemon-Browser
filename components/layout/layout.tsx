@@ -1,6 +1,6 @@
 import useWindowWidth from "@/lib/hooks/useWindowWidth";
 import { useRouter } from "next/router";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { Header, IHeaderProps } from "../header/Header";
 import Menu, { IMenuLink } from "../menu/Menu";
 import styles from './Layout.module.css';
@@ -23,10 +23,6 @@ export default function Layout ( {children} : {children: ReactElement} ) {
         showMenuButton: windowWidth <= 1024,
         showSearchBar: !(pathname == "/")
     }
-
-    useEffect( () => {
-        console.log(showMenu, (windowWidth <= 1024) && showMenu)
-    }, [showMenu] );
     
     return (
         <div>

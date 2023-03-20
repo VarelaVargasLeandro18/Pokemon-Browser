@@ -1,11 +1,11 @@
 .header {
-    min-height: var(--header-height);
-    background-color: antiquewhite;
+    height: var(--header-height);
     text-align: center;
     vertical-align: middle;
-    padding: 0 1em;
-    position: sticky;
-    top: 0px;
+    background-color: var( --pokemon-blue-text );
+    width: 100%;
+    position: fixed;
+    top: 0;
 
     display: flex;
     flex-flow: row nowrap;
@@ -14,9 +14,10 @@
 }
 
 .logo {
+    justify-self: center;
     font-size: 5vw;
-    text-shadow: -3px 0 blue, 0 3px blue, 3px 0 blue, 0 -3px blue;
-    color: yellow;
+    text-shadow: -3px 0 var(--pokemon-blue-text), 0 3px var(--pokemon-blue-text), 3px 0 var(--pokemon-blue-text), 0 -3px var(--pokemon-blue-text);
+    color: var(--pokemon-yellow-text);
     flex: 1;
 }
 
@@ -28,8 +29,4 @@
 .buttonIcon {
     width: 20px;
     height: 20px;
-}
-
-.logo {
-    justify-self: center;
 }
