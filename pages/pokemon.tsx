@@ -1,34 +1,15 @@
 import { IPokemonCardProp, PokemonCard } from "@/components/pokemon-card/PokemonCard";
+import { useSearchPokemon } from "@/lib/hooks/useSearchPokemon";
 import styles from '../styles/Pokemon.module.css';
 
-const ejBulbasaur : IPokemonCardProp = {
-    attack: 10,
-    defense: 10,
-    hp: 10,
-    name: 'Bulbasaur',
-    specialAttack: 10,
-    specialDefense: 10,
-    speed: 10,
-    spriteSrc: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-    types: ["Poison", "Leaf", "Grass", "Fire"]
-} 
-
 export default function PokemonPage () {
+    const {pokemons, error, isLoading} = useSearchPokemon({ offset: 0 });
 
     return (
         <div className={ styles.container }>
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
-            <PokemonCard {...ejBulbasaur} />
+            { (isLoading) ? 
+                <span>Wait</span> : 
+                pokemons.results.map( (pokemon : any) => <PokemonCard key={pokemon.name} name={pokemon.name}/> )}
         </div>
     );
 }

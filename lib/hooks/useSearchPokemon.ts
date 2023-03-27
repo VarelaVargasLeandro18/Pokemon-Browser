@@ -1,9 +1,21 @@
+import { IPokemonCardProp } from '@/components/pokemon-card/PokemonCard';
 import { LIMIT_PAGES, PAGE_LIMIT, POKEMON_SEARCH_URL } from '@/constants/constants';
 import useSWR from 'swr';
 
 export interface ISearchPokemon {
     pokemonName? : string,
-    offset : number
+    offset? : number
+}
+
+export interface IUseSearchPokemonFn<Type> {
+    (arg : ISearchPokemon): IUseSearchPokemonReturn<Type>
+}
+
+interface IUseSearchPokemonReturn<Type> {
+    pokemons: Type,
+    error: any,
+    isLoading: any,
+    next: any
 }
 
 const getPokemonURLSearch = ( pokemonName? : string, offset = 0 ) => {
@@ -18,7 +30,8 @@ export function useSearchPokemon ( { pokemonName, offset } : ISearchPokemon ) {
     const { data, error, isLoading } = useSWR( getPokemonURLSearch( pokemonName, offset ), fetcher );
 
     return {
-        pokemons : data,
+        pokemons: data,
+        next: data?.next,
         error,
         isLoading
     }

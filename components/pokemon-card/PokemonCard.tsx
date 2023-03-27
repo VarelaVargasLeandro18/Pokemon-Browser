@@ -1,36 +1,32 @@
+import { IUseSearchPokemonReturn, useSearchPokemon } from '@/lib/hooks/useSearchPokemon';
+import { IPokemon } from './IPokemon';
 import styles from './PokemonCard.module.css';
 
 export interface IPokemonCardProp {
-    name: string,
-    types: string[],
-    attack: number,
-    hp: number,
-    defense: number,
-    specialAttack: number,
-    specialDefense: number,
-    speed: number,
-    spriteSrc : string
+    name: string
 }
 
 const addLucidaConsoleFontStyle = ( style : string ) => `${style} ${styles.consolaFont}`;
 
-export function PokemonCard ( { name, types, attack, hp, defense, specialAttack, specialDefense, speed, spriteSrc } : IPokemonCardProp ) {
+export function PokemonCard ( { name } : IPokemonCardProp ) {
+    const {pokemons, isLoading, error} = useSearchPokemon( { pokemonName: name } ) as IUseSearchPokemonReturn<IPokemon>;
 
     return (
         <div className={ styles.card }>
-            <img className={ styles.img } src={spriteSrc} alt="Avatar" />
+            {pokemons ?
+            <>
+            <img className={ styles.img } src={pokemons.sprites.front_default} alt="Avatar" />
             <div className={ styles.textContainer }>
-                <h4 className={ styles.name }>{name}</h4>
+                <h4 className={ styles.name }>{pokemons.name}</h4>
                 <div className={ addLucidaConsoleFontStyle(styles.typesContainer) }>
-                    {types.map( (type, index) => <p key={ `${type}_${index}` } className={ styles.consolaFont }>{type}</p> )}
+                    {pokemons.types.map( (type, index) => <p key={ `${type}_${index}` } className={ styles.consolaFont }>{type.type.name}</p> )}
                 </div>
-                <p className={ styles.consolaFont }>Attack: { attack }</p>
-                <p className={ styles.consolaFont }>Hp: { hp }</p>
-                <p className={ styles.consolaFont }>Defense: { defense }</p>
-                <p className={ styles.consolaFont }>S. A.: { specialAttack }</p>
-                <p className={ styles.consolaFont }>S. D.: { specialDefense }</p>
-                <p className={ styles.consolaFont }>Speed: { speed }</p>
+                {pokemons.stats.map( stat => <p className={ styles.consolaFont }>{ `${stat.stat.name}: ${stat.base_stat}` }</p> )}
             </div>
+            </>
+            :
+            <span>Wait</span>
+            }
       </div> 
     )
 
