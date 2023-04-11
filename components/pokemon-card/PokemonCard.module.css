@@ -1,3 +1,16 @@
 .card {
     text-align: center;
+    outline: 1px solid black;
+    max-width: 250px;
+}
+
+.consolaFont {
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.typesContainer {
+    display: flex;
+    max-width: 100%;
+    outline: 1px solid black;
+    justify-content: space-evenly;
 }

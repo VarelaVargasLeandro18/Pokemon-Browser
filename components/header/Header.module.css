@@ -2,7 +2,7 @@
     height: var(--header-height);
     text-align: center;
     vertical-align: middle;
-    background-color: var( --pokemon-blue );
+    background-color: var( --main );
     width: 100%;
     position: fixed;
     top: 0;

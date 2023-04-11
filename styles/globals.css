@@ -4,6 +4,7 @@
   --header-height: 4rem;
   --nav-aside-width: 20%;
   --pokemon-blue: #0075BE;
+  --main: #21226144;
   --pokemon-yellow-text: #FFCC00;
   --pokemon-yellow: #FFCC00;
   --pokemon-orange: #D5A100;
@@ -21,10 +22,6 @@ body {
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-}
-
-.consolaFont {
-  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 a {

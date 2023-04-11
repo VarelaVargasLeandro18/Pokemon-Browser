@@ -4,6 +4,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 1em;
 }
 
 @media screen and (min-width: 1024px) {
