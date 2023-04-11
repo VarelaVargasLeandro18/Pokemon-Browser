@@ -20,7 +20,7 @@ export default function IntersectionObserverWrapper ( { children, intersectionOb
         observer.disconnect();
     }
     
-    const callback = useCallback( (node : Element) => {        
+    const callback = useCallback( (node: HTMLDivElement | null) => {        
         if (!intersectionObserverCallback || !node) return;
         
         const options : IntersectionObserverInit = {
