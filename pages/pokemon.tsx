@@ -1,6 +1,7 @@
 import Container from "@/components/container/Container";
 import IntersectionObserverWrapper from "@/components/intersection-observer-wrapper/IntersectionObserverWrapper";
 import { PokemonCard } from "@/components/pokemon-card/PokemonCard";
+import Spinner from "@/components/spinner/Spinner";
 import { useSearchPokemons } from "@/lib/hooks/useSearchPokemon";
 
 export default function PokemonPage () {
@@ -23,7 +24,7 @@ export default function PokemonPage () {
                     return <PokemonCard key={pokemon.name} name={pokemon.name}/>
                 } ) )
                 :
-                <span>Wait...</span>
+                <Spinner/>
             }
         </Container>
     );
