@@ -2,7 +2,7 @@
     height: var(--header-height);
     text-align: center;
     vertical-align: middle;
-    background-color: var( --pokemon-blue-text );
+    background-color: var( --pokemon-blue );
     width: 100%;
     position: fixed;
     top: 0;
@@ -14,14 +14,14 @@
 }
 
 .logo {
-    justify-self: center;
     font-size: 5vw;
-    text-shadow: -3px 0 var(--pokemon-blue-text), 0 3px var(--pokemon-blue-text), 3px 0 var(--pokemon-blue-text), 0 -3px var(--pokemon-blue-text);
+    text-shadow: -3px 0 var(--pokemon-blue), 0 3px var(--pokemon-blue), 3px 0 var(--pokemon-blue), 0 -3px var(--pokemon-blue);
     color: var(--pokemon-yellow-text);
     flex: 1;
 }
 
 .button {
+    justify-self: flex-start;
     all: unset;
     cursor: pointer;
 }

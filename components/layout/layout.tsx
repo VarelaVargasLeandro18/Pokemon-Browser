@@ -1,8 +1,8 @@
 import useWindowWidth from "@/lib/hooks/useWindowWidth";
 import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { Header, IHeaderProps } from "../header/Header";
-import Menu, { IMenuLink } from "../menu/Menu";
+import Menu, { IMenuLink, IMenuProps } from "../menu/Menu";
 import styles from './Layout.module.css';
 
 const menuLinks : IMenuLink[] = [
@@ -12,7 +12,7 @@ const menuLinks : IMenuLink[] = [
     { name: 'Items', path: '/items' }
 ]
 
-export default function Layout ( {children} : {children: ReactElement} ) {
+export default function Layout ( {children} : PropsWithChildren ) {
     const [showMenu, setShowMenu] = useState( false );
     const [windowWidth] = useWindowWidth();
     const { pathname } = useRouter();
@@ -20,14 +20,19 @@ export default function Layout ( {children} : {children: ReactElement} ) {
     const headerProps : IHeaderProps = {
         setShowMenu,
         showMenu,
-        showMenuButton: windowWidth <= 1024,
+        showMenuButton: windowWidth <= 1023,
         showSearchBar: !(pathname == "/")
+    }
+
+    const menuProps : IMenuProps = {
+        menuLinks,
+        showMenu
     }
     
     return (
         <div>
             <Header {...headerProps} />
-            { (windowWidth > 1024 || showMenu) && <Menu menuLinks={ menuLinks } /> }
+            <Menu {...menuProps} />
             <div className={styles.realBody}>{children}</div>
         </div>
     )

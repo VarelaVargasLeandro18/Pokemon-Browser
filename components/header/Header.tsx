@@ -12,7 +12,8 @@ export interface IHeaderProps {
 export function Header ( { showMenuButton, showSearchBar, setShowMenu, showMenu } : IHeaderProps ) {
     return (
         <header className={ styles.header }>
-            {showMenuButton && <button className={ styles.button } onClick={ () => setShowMenu(!showMenu) }>
+            {showMenuButton && 
+            <button className={ styles.button } onClick={ () => setShowMenu(!showMenu) }>
                 <img className={ styles.buttonIcon } src="/menu_icon.svg" alt="Menu Button" />
             </button>}
             <Link href={ "/" }>
