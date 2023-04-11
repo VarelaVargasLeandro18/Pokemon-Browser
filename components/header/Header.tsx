@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SearchBar from '../search-bar/searchBar';
+import SearchBar from '../search-bar/SearchBar';
 import styles from './Header.module.css';
 
 export interface IHeaderProps {

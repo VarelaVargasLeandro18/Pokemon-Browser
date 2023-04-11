@@ -1,4 +1,4 @@
-import { LegacyRef, PropsWithChildren, useCallback, useEffect, useRef } from "react";
+import { PropsWithChildren, useCallback, useEffect } from "react";
 import realBodyStyles from '../layout/Layout.module.css';
 
 interface IIntersectionObserverWrapperProps {
@@ -8,13 +8,11 @@ interface IIntersectionObserverWrapperProps {
 export default function IntersectionObserverWrapper ( { children, intersectionObserverCallback  } : PropsWithChildren<IIntersectionObserverWrapperProps> ) {
 
     let observer : IntersectionObserver;
-    const ref : LegacyRef<HTMLDivElement> = useRef(null);
 
     useEffect( () => {
     }, [] );
 
     const realObserverCallback = (e : IntersectionObserverEntry[]) => {
-        console.log(e);
         if (!intersectionObserverCallback || !e[0].isIntersecting) return;
         intersectionObserverCallback();
         observer.disconnect();

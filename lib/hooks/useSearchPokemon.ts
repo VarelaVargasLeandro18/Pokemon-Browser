@@ -1,4 +1,3 @@
-import { IPokemonCardProp } from '@/components/pokemon-card/PokemonCard';
 import { LIMIT_PAGES, PAGE_LIMIT, POKEMON_SEARCH_URL } from '@/constants/constants';
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
@@ -32,7 +31,7 @@ export function useSearchPokemon ( { pokemonName } : ISearchPokemon ) {
     }
 }
 
-function getKey (pageIndex : number, previousPageData : any) {
+function getKey (pageIndex : number) {
     const url = getPokemonURLSearch( {offset: pageIndex * PAGE_LIMIT} );
     
     return url;

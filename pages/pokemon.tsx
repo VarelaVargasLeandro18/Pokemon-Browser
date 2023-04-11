@@ -1,7 +1,7 @@
+import Container from "@/components/container/Container";
 import IntersectionObserverWrapper from "@/components/intersection-observer-wrapper/IntersectionObserverWrapper";
 import { PokemonCard } from "@/components/pokemon-card/PokemonCard";
 import { useSearchPokemons } from "@/lib/hooks/useSearchPokemon";
-import styles from '../styles/Pokemon.module.css';
 
 export default function PokemonPage () {
     const {data, error, isLoading, setSize, size} = useSearchPokemons();
@@ -11,7 +11,7 @@ export default function PokemonPage () {
     }
 
     return (
-        <div className={ styles.container }>
+        <Container>
             { 
                 data?
                 data.map( (pageResults : any, indexPage : number) => pageResults.results.map( (pokemon : any, index: number) => {
@@ -25,6 +25,6 @@ export default function PokemonPage () {
                 :
                 <span>Wait...</span>
             }
-        </div>
+        </Container>
     );
 }
