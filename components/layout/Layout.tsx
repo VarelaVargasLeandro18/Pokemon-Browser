@@ -21,7 +21,7 @@ export default function Layout ( {children} : PropsWithChildren ) {
         setShowMenu,
         showMenu,
         showMenuButton: windowWidth <= 1023,
-        showSearchBar: !(pathname == "/")
+        showSearchBar: false
     }
 
     const menuProps : IMenuProps = {

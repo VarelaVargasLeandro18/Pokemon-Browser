@@ -1,6 +1,7 @@
 import { LIMIT_PAGES, PAGE_LIMIT, POKEMON_SEARCH_URL } from '@/constants/constants';
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
+import { fetcher } from '../fetcher';
 
 export interface ISearchPokemon {
     pokemonName? : string
@@ -18,8 +19,6 @@ const getPokemonURLSearch = ( {pokemonName = "", offset = 0} ) => {
 
     return `${POKEMON_SEARCH_URL}/${pokemonName}`;
 }
-
-const fetcher = (url : string) => fetch(url).then(r => r.json());
 
 export function useSearchPokemon ( { pokemonName } : ISearchPokemon ) {
     const { data, error, isLoading } = useSWR( getPokemonURLSearch( {pokemonName} ), fetcher );
