@@ -2,10 +2,11 @@ import Container from "@/components/container/Container";
 import IntersectionObserverWrapper from "@/components/intersection-observer-wrapper/IntersectionObserverWrapper";
 import { PokemonCard } from "@/components/pokemon-card/PokemonCard";
 import Spinner from "@/components/spinner/Spinner";
-import { useSearchPokemons } from "@/lib/hooks/useSearchPokemon";
+import { API_USED_PAGES } from "@/constants/constants";
+import { useSearchInfinite } from "@/lib/hooks/useSearch";
 
 export default function PokemonPage () {
-    const {data, error, isLoading, setSize, size} = useSearchPokemons();
+    const {data, error, isLoading, setSize, size} = useSearchInfinite( API_USED_PAGES.pokemon );
 
     const nextPage = () => {
         setSize( size + 1 );

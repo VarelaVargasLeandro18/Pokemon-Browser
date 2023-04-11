@@ -1,4 +1,6 @@
-import { IUseSearchPokemonReturn, useSearchPokemon } from '@/lib/hooks/useSearchPokemon';
+import { API_USED_PAGES } from '@/constants/constants';
+import { useSearch } from '@/lib/hooks/useSearch';
+import { IUseSearchPokemonReturn } from '@/lib/hooks/useSearch';
 import Spinner from '../spinner/Spinner';
 import { IPokemon } from './IPokemon';
 import styles from './PokemonCard.module.css';
@@ -10,7 +12,7 @@ export interface IPokemonCardProp {
 const addLucidaConsoleFontStyle = ( style : string ) => `${style} ${styles.consolaFont}`;
 
 export function PokemonCard ( { name } : IPokemonCardProp ) {
-    const {pokemon, isLoading, error} = useSearchPokemon( { pokemonName: name } ) as IUseSearchPokemonReturn<IPokemon>;
+    const {pokemon, isLoading, error} = useSearch( { page: API_USED_PAGES.pokemon, name: name } ) as IUseSearchPokemonReturn<IPokemon>;
     
     return (
         <div className={ styles.card }>
