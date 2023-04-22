@@ -4,6 +4,7 @@ import { PropsWithChildren, useState } from "react";
 import { Header, IHeaderProps } from "../header/Header";
 import Menu, { IMenuLink, IMenuProps } from "../menu/Menu";
 import styles from './Layout.module.css';
+import Head from "next/head";
 
 const menuLinks : IMenuLink[] = [
     { name: 'Pokemon', path: '/pokemon' },
@@ -31,6 +32,9 @@ export default function Layout ( {children} : PropsWithChildren ) {
     
     return (
         <div>
+            <Head>
+                <title>Pokemon Browser</title>
+            </Head>
             <Header {...headerProps} />
             <Menu {...menuProps} />
             <div className={styles.realBody}>{children}</div>
