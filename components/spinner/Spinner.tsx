@@ -1,5 +1,7 @@
+import styles from './Spinner.module.css';
+
 export default function Spinner() {
     return (
-        <span>Wait...</span>
+        <div className={styles.ldsDualRing}></div>
     )
 }
