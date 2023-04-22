@@ -18,9 +18,11 @@ export default function PokemonPage () {
                 data?
                 data.map( (pageResults : any, indexPage : number) => pageResults.results.map( (pokemon : any, index: number) => {
                     if ( indexPage === data.length -1 && index === pageResults.results.length -1 ) {                        
-                        return <IntersectionObserverWrapper key={ `${pokemon.name}_wrapper` } intersectionObserverCallback={nextPage} >
-                            <PokemonCard key={pokemon.name} name={pokemon.name}/>
-                        </IntersectionObserverWrapper>
+                        return (
+                            <IntersectionObserverWrapper key={ `${pokemon.name}_wrapper` } intersectionObserverCallback={nextPage} >
+                                <PokemonCard key={pokemon.name} name={pokemon.name}/>
+                            </IntersectionObserverWrapper>
+                        )
                     }
                     return <PokemonCard key={pokemon.name} name={pokemon.name}/>
                 } ) )

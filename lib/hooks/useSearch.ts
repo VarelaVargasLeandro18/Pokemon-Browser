@@ -25,7 +25,7 @@ export function useSearch ( { page, name } : ISearch ) {
     const { data, error, isLoading } = useSWR( getURLSearch( page, name ), fetcher );
 
     return {
-        pokemon: data,
+        response: data,
         error,
         isLoading
     }
@@ -42,11 +42,4 @@ export function useSearchInfinite ( page : API_USED_PAGES) {
         error,
         isLoading
     }
-}
-
-export interface IUseSearchPokemonReturn<Type> {
-    pokemon: Type,
-    error: any,
-    isLoading: any,
-    next: any
 }
