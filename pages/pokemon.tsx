@@ -1,6 +1,6 @@
+import { PokemonCard } from "@/components/cards/pokemon-card/PokemonCard";
 import Container from "@/components/container/Container";
 import IntersectionObserverWrapper from "@/components/intersection-observer-wrapper/IntersectionObserverWrapper";
-import { PokemonCard } from "@/components/pokemon-card/PokemonCard";
 import Spinner from "@/components/spinner/Spinner";
 import { API_USED_PAGES } from "@/constants/constants";
 import { useSearchInfinite } from "@/lib/hooks/useSearch";

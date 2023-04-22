@@ -9,7 +9,7 @@ export interface ISearch {
 }
 
 export interface IUseSearchReturn<Type> {
-    response: Type,
+    response?: Type,
     error: any,
     isLoading: any,
     next: any
