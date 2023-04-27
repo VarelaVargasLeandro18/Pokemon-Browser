@@ -6,7 +6,7 @@ import { IPokemon } from './IPokemon';
 import ICardProp from '../ICardProp';
 
 export function PokemonCard ( { name } : ICardProp ) {
-    const {data, isLoading, error} = useSearch( { page: API_USED_PAGES.pokemon, name: name } ) as IUseSearchReturn<IPokemon>;
+    const {data, isLoading, error} = useSearch<IPokemon>( { page: API_USED_PAGES.pokemon, name: name } );
     
     if ( !data ) return <><Spinner/></>
 

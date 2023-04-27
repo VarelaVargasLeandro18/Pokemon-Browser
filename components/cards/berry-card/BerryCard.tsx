@@ -6,7 +6,7 @@ import Card, { ICardProperties } from "../card/Card";
 import Spinner from "@/components/spinner/Spinner";
 
 export default function BerryCard ( {name} : ICardProp ) {
-    const {data, isLoading, error} = useSearch( { page: API_USED_PAGES.berry, name: name } ) as IUseSearchReturn<IBerry>;
+    const {data, isLoading, error} = useSearch<IBerry>( { page: API_USED_PAGES.berry, name: name } );
 
     if ( !data ) return <><Spinner/></>
 

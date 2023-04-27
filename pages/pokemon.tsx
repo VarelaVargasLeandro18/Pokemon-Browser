@@ -4,10 +4,10 @@ import Container from "@/components/container/Container";
 import IntersectionObserverWrapper from "@/components/intersection-observer-wrapper/IntersectionObserverWrapper";
 import Spinner from "@/components/spinner/Spinner";
 import { API_USED_PAGES } from "@/constants/constants";
-import { IUseSearchInfiniteReturn, useSearchInfinite } from "@/lib/hooks/useSearch";
+import { useSearchInfinite } from "@/lib/hooks/useSearch";
 
 export default function PokemonPage () {
-    const {data, error, isLoading, setSize, size} = useSearchInfinite( API_USED_PAGES.pokemon ) as IUseSearchInfiniteReturn<IPokemon>;
+    const {data, error, isLoading, setSize, size} = useSearchInfinite<IPokemon>( API_USED_PAGES.pokemon );
 
     const nextPage = () => {
         setSize( size + 1 );

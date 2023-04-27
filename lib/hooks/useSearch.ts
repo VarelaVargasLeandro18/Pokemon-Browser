@@ -11,8 +11,7 @@ export interface ISearch {
 export interface IUseSearchReturn<Type> {
     data?: Type,
     error: any,
-    isLoading: any,
-    next: any
+    isLoading: any
 }
 
 export interface IPokeApiCollectionGeneralResponse<Type> {
@@ -36,7 +35,7 @@ const getURLSearch = ( page : API_USED_PAGES, name? : string, offset = 0 ) => {
     return `${MAIN_URL}/${page}/${name}`;
 }
 
-export function useSearch ( { page, name } : ISearch ) {
+export function useSearch<Type> ( { page, name } : ISearch ) : IUseSearchReturn<Type> {
     const { data, error, isLoading } = useSWR( getURLSearch( page, name ), fetcher );
 
     return {
@@ -46,7 +45,7 @@ export function useSearch ( { page, name } : ISearch ) {
     }
 }
 
-export function useSearchInfinite ( page : API_USED_PAGES) {
+export function useSearchInfinite<Type> ( page : API_USED_PAGES) : IUseSearchInfiniteReturn<Type> {
     const { data, size, setSize, error, isLoading } = 
         useSWRInfinite( (pageIndex : number) => getURLSearch( page, "", pageIndex * PAGE_LIMIT ), fetcher );
 
