@@ -9,10 +9,25 @@ export interface ISearch {
 }
 
 export interface IUseSearchReturn<Type> {
-    response?: Type,
+    data?: Type,
     error: any,
     isLoading: any,
     next: any
+}
+
+export interface IPokeApiCollectionGeneralResponse<Type> {
+    count: number,
+    next?: string,
+    previous?: string,
+    results: Type[]
+}
+
+export interface IUseSearchInfiniteReturn<Type> {
+    data?: IPokeApiCollectionGeneralResponse<Type>[],
+    size: number,
+    setSize: (size: number | ((_size: number) => number)) => Promise<any[] | undefined>,
+    error: any,
+    isLoading: boolean
 }
 
 const getURLSearch = ( page : API_USED_PAGES, name? : string, offset = 0 ) => {
@@ -25,7 +40,7 @@ export function useSearch ( { page, name } : ISearch ) {
     const { data, error, isLoading } = useSWR( getURLSearch( page, name ), fetcher );
 
     return {
-        response: data,
+        data,
         error,
         isLoading
     }

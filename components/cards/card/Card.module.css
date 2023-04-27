@@ -10,7 +10,8 @@
 
 .typesContainer {
     display: flex;
-    max-width: 100%;
+    width: 250px;
     outline: 1px solid black;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
