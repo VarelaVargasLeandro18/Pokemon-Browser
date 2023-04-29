@@ -8,10 +8,7 @@ interface IIntersectionObserverWrapperProps {
 export default function IntersectionObserverWrapper ( { children, intersectionObserverCallback  } : PropsWithChildren<IIntersectionObserverWrapperProps> ) {
 
     let observer : IntersectionObserver;
-
-    useEffect( () => {
-    }, [] );
-
+    
     const realObserverCallback = (e : IntersectionObserverEntry[]) => {
         if (!intersectionObserverCallback || !e[0].isIntersecting) return;
         intersectionObserverCallback();

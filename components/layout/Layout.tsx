@@ -9,7 +9,7 @@ import Head from "next/head";
 const menuLinks : IMenuLink[] = [
     { name: 'Pokemon', path: '/pokemon' },
     { name: 'Berries', path: '/berries' },
-    { name: 'Places', path: '/places' },
+    { name: 'Machines', path: '/machines' },
     { name: 'Items', path: '/items' }
 ]
 
