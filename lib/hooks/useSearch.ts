@@ -14,15 +14,20 @@ export interface IUseSearchReturn<Type> {
     isLoading: any
 }
 
-export interface IPokeApiCollectionGeneralResponse<Type> {
+export interface IPokeApiCollectionGeneralResponse {
     count: number,
     next?: string,
     previous?: string,
-    results: Type[]
+    results: IResult[]
 }
 
-export interface IUseSearchInfiniteReturn<Type> {
-    data?: IPokeApiCollectionGeneralResponse<Type>[],
+export interface IResult {
+    name: string,
+    url: string
+}
+
+export interface IUseSearchInfiniteReturn {
+    data?: IPokeApiCollectionGeneralResponse[],
     size: number,
     setSize: (size: number | ((_size: number) => number)) => Promise<any[] | undefined>,
     error: any,
@@ -45,7 +50,7 @@ export function useSearch<Type> ( { page, name } : ISearch ) : IUseSearchReturn<
     }
 }
 
-export function useSearchInfinite<Type> ( page : API_USED_PAGES) : IUseSearchInfiniteReturn<Type> {
+export function useSearchInfinite ( page : API_USED_PAGES) : IUseSearchInfiniteReturn {
     const { data, size, setSize, error, isLoading } = 
         useSWRInfinite( (pageIndex : number) => getURLSearch( page, "", pageIndex * PAGE_LIMIT ), fetcher );
 
