@@ -7,7 +7,7 @@ import { API_USED_PAGES } from "@/constants/constants";
 import { useSearchInfinite } from "@/lib/hooks/useSearch";
 
 export default function PokemonPage () {
-    const {data, error, isLoading, setSize, size} = useSearchInfinite<IPokemon>( API_USED_PAGES.pokemon );
+    const {data, error, isLoading, setSize, size} = useSearchInfinite( API_USED_PAGES.pokemon );
 
     const nextPage = () => {
         setSize( size + 1 );

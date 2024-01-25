@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect } from "react";
+import { MutableRefObject, PropsWithChildren, useCallback, useEffect, useRef } from "react";
 import realBodyStyles from '../layout/Layout.module.css';
 
 interface IIntersectionObserverWrapperProps {
@@ -7,12 +7,12 @@ interface IIntersectionObserverWrapperProps {
 
 export default function IntersectionObserverWrapper ( { children, intersectionObserverCallback  } : PropsWithChildren<IIntersectionObserverWrapperProps> ) {
 
-    let observer : IntersectionObserver;
+    let observer : MutableRefObject<IntersectionObserver | undefined> = useRef<IntersectionObserver>();
     
     const realObserverCallback = (e : IntersectionObserverEntry[]) => {
         if (!intersectionObserverCallback || !e[0].isIntersecting) return;
         intersectionObserverCallback();
-        observer.disconnect();
+        observer.current?.disconnect();
     }
     
     const callback = useCallback( (node: HTMLDivElement | null) => {        
@@ -23,8 +23,8 @@ export default function IntersectionObserverWrapper ( { children, intersectionOb
             threshold: [.5]
         }
 
-        observer = new IntersectionObserver( realObserverCallback, options );
-        observer.observe(node);  
+        observer.current = new IntersectionObserver( realObserverCallback, options );
+        observer.current?.observe(node);  
     }, [] );
 
     return (

@@ -1,4 +1,5 @@
 import styles from './Card.module.css';
+import Image from 'next/image';
 
 export interface IItem {
     info: string | number,
@@ -19,7 +20,7 @@ export default function Card ( { imagen, title, subtitleItems, items } : ICardPr
     return (
         <>
             <div className={ styles.card }>
-                {imagen? <img className={ styles.img } src={imagen} alt="Avatar" /> : <></>}
+                {imagen? <Image width={50} height={50} className={ styles.img } src={imagen} alt="Avatar" /> : <></>}
                 <div className={ styles.textContainer }>
                     <h4 className={ styles.name }>{title}</h4>
                     {
