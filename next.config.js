@@ -10,7 +10,16 @@ const nextConfig = {
         pathname: '/**'
       }
     ]
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/pokemon',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

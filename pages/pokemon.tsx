@@ -13,8 +13,6 @@ export default function PokemonPage () {
         setSize( size + 1 );
     }
 
-    console.log(isLoading, error, size)
-
     return (
         <Container>
             { 
