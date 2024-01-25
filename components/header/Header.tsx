@@ -16,7 +16,7 @@ export function Header ( { showMenuButton, showSearchBar, setShowMenu, showMenu 
             <button className={ styles.button } onClick={ () => setShowMenu(!showMenu) }>
                 <img className={ styles.buttonIcon } src="/menu_icon.svg" alt="Menu Button" />
             </button>}
-            <Link href={ "/" }>
+            <Link className='headerLink' href={ "/pokemon" }>
                 <h1 className={ styles.logo }>Pokemon Browser</h1>
             </Link>
             { showSearchBar && <SearchBar/> }

@@ -8,16 +8,22 @@
     top: 0;
 
     display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
     justify-content: space-evenly;
 }
 
+.headerLink {
+    height: var(--header-height);
+}
+
 .logo {
-    font-size: 5vw;
     text-shadow: -3px 0 var(--pokemon-blue), 0 3px var(--pokemon-blue), 3px 0 var(--pokemon-blue), 0 -3px var(--pokemon-blue);
     color: var(--pokemon-yellow-text);
-    flex: 1;
+    height: var(--header-height);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .button {
